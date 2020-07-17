@@ -24,6 +24,12 @@
   "projects": {
     "core": {
       "tags": []
+    },
+    "angular": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   }
 }

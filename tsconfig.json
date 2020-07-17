@@ -16,7 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ttransformer/core": ["libs/core/src/index.ts"]
+      "@ttransformer/core": ["libs/core/src/index.ts"],
+      "@ttransformer/angular": ["libs/angular/src/index.ts"],
+      "@ttransformer/shared": ["libs/shared/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

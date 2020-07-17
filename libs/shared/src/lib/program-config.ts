@@ -7,4 +7,3 @@ export const defaultProgramConfig: ProgramConfig = {
   framework: "angular",
   unitTestFramework: "jasmine"
 };
-
