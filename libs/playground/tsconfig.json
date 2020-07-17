@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc",
+    "plugins": [
+      { "transform": "../../dist/libs/core", "framework": "angular" }
+    ]
+  },
+  "files": ["playground.ts"]
+}
