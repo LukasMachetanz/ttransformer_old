@@ -25,10 +25,14 @@
     "core": {
       "tags": []
     },
-    "angular": {
+    "angular-karma-demo": {
       "tags": []
     },
-    "shared": {
+    "angular-karma-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["angular-karma-demo"]
+    },
+    "angular": {
       "tags": []
     }
   }

@@ -1,12 +1,16 @@
-import * as ts from "typescript";
+import { Program, TransformationContext, SourceFile, TransformerFactory, visitNode } from "typescript";
+import { defaultProgramConfig, ProgramConfig } from "./types/program-config";
 import { getVisitor } from "./visitor";
-import { defaultProgramConfig, ProgramConfig } from "@ttransformer/shared";
+import { VisitorTransformer } from "./types/visitor-transformer";
 
-export const program = (program: ts.Program, config: ProgramConfig): ts.TransformerFactory<ts.SourceFile> => {
-  const programConfig = { ...defaultProgramConfig, ...config };
-  return (context: ts.TransformationContext): ((sourceFile: ts.SourceFile) => ts.SourceFile) => {
-    return (sourceFile: ts.SourceFile): ts.SourceFile => {
-      return ts.visitNode(sourceFile, getVisitor({ program, sourceFile, context, programConfig }));
+export function getProgram(transformer: VisitorTransformer) {
+  return (program: Program, config: ProgramConfig): TransformerFactory<SourceFile> => {
+    const programConfig = { ...defaultProgramConfig, ...config };
+
+    return (context: TransformationContext): ((sourceFile: SourceFile) => SourceFile) => {
+      return (sourceFile: SourceFile): SourceFile => {
+        return visitNode(sourceFile, getVisitor(transformer, { program, sourceFile, context, programConfig }));
+      };
     };
   };
-};
+}

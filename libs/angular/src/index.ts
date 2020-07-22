@@ -1,1 +1,2 @@
-export * from "./lib/ttransformer-visitor-transformation";
+import { program } from "./lib/program";
+export default program;

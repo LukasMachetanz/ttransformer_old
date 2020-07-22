@@ -1,18 +1,10 @@
 import { Node, VisitResult, Visitor, visitEachChild } from "typescript";
-import { TtransformerVisitorConfig } from "@ttransformer/shared";
-import { ttransformerVisitorTransformation } from "@ttransformer/angular";
+import { VisitorConfig } from "./types/visitor-config";
+import { VisitorTransformer } from "./types/visitor-transformer";
 
-export function getVisitor(config: TtransformerVisitorConfig): Visitor {
+export function getVisitor(transformer: VisitorTransformer, config: VisitorConfig): Visitor {
   const visitor: Visitor = (node: Node): VisitResult<Node> => {
-    // =========================
-    // === START - Transform ===
-
-    if (config.programConfig.framework === "angular") {
-      ttransformerVisitorTransformation(node, config);
-    }
-
-    // === END - Transform ===
-    // =======================
+    transformer(node, config);
     return visitEachChild(node, visitor, config.context);
   };
 
