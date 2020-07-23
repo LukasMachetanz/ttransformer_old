@@ -1,3 +1,5 @@
+
+
 export type TtransformedClass<T> = {
   [K in keyof T]: T[K] extends Function ? jasmine.Spy : T[K];
 };

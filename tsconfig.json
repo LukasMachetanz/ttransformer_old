@@ -17,7 +17,10 @@
     "baseUrl": ".",
     "paths": {
       "@ttransformer/core": ["libs/core/src/index.ts"],
-      "@ttransformer/angular": ["libs/angular/src/index.ts"]
+      "@ttransformer/angular": ["libs/angular/src/index.ts"],
+      "@ttransformer/transformer-support": [
+        "libs/transformer-support/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

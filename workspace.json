@@ -203,6 +203,43 @@
           }
         }
       }
+    },
+    "transformer-support": {
+      "root": "libs/transformer-support",
+      "sourceRoot": "libs/transformer-support/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "libs/transformer-support/tsconfig.lib.json",
+              "libs/transformer-support/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/transformer-support/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/transformer-support/jest.config.js",
+            "tsConfig": "libs/transformer-support/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "builder": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/libs/transformer-support",
+            "tsConfig": "libs/transformer-support/tsconfig.lib.json",
+            "packageJson": "libs/transformer-support/package.json",
+            "main": "libs/transformer-support/src/index.ts",
+            "assets": ["libs/transformer-support/*.md"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -272,6 +309,9 @@
     },
     "@nrwl/angular:library": {
       "unitTestRunner": "karma"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
     }
   }
 }
