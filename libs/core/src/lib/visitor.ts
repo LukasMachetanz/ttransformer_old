@@ -1,11 +1,11 @@
 import { Node, VisitResult, Visitor, visitEachChild } from "typescript";
-import { VisitorConfig } from "./types/visitor-config";
+import { TransformerConfig } from "./types/transformer-config";
 import { VisitorTransformer } from "./types/visitor-transformer";
 
-export function getVisitor(transformer: VisitorTransformer, config: VisitorConfig): Visitor {
+export function getVisitor(visitorTransformer: VisitorTransformer, transformerConfig: TransformerConfig): Visitor {
   const visitor: Visitor = (node: Node): VisitResult<Node> => {
-    transformer(node, config);
-    return visitEachChild(node, visitor, config.context);
+    visitorTransformer(node, transformerConfig);
+    return visitEachChild(node, visitor, transformerConfig.context);
   };
 
   return visitor;

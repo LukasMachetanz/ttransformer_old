@@ -1,4 +1,4 @@
-import { Node } from "typescript";
-import { VisitorConfig } from "./visitor-config";
+import { Node, VisitResult } from "typescript";
+import { TransformerConfig } from "./transformer-config";
 
-export type VisitorTransformer = (node: Node, config: VisitorConfig) => void;
+export type VisitorTransformer = (node: Node, config: TransformerConfig) => VisitResult<Node>;

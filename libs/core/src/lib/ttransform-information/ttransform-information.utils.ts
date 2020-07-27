@@ -1,4 +1,4 @@
-import { Symbol as TsSymbol, Node, isClassDeclaration, ClassDeclaration } from "typescript";
+import { Symbol as TsSymbol, Node, isClassDeclaration, ClassDeclaration, SourceFile } from "typescript";
 import { TtransformInformation } from "../ttransform-information/ttransform-information";
 
 export function isTtransformTarget(node: Node, { targets }: TtransformInformation): node is ClassDeclaration {
@@ -12,4 +12,8 @@ export function isTtransformTarget(node: Node, { targets }: TtransformInformatio
   const symbolToCompare = symbol || originalSymbol;
 
   return !!(isClassDeclaration(node) && symbolToCompare && targets.includes(symbolToCompare));
+}
+
+export function containsTtransformTarget(sourceFile: SourceFile, ttransformInformation: TtransformInformation): boolean {
+  return ttransformInformation.targetsSourceFileNames.includes(sourceFile.fileName);
 }

@@ -1,10 +1,6 @@
-import { getProgram, VisitorTransformer } from "@ttransformer/core";
-import { isTtransformTarget } from "@ttransformer/core";
+import { getProgram } from "@ttransformer/core";
+import { visitorTransformer } from "./visitor-transformer";
+import { sourceFileTransformer } from "./source-file-transformer";
 
-const visitorTransformer: VisitorTransformer = (node, { ttransformInformation }) => {
-  if (isTtransformTarget(node, ttransformInformation)) {
-    console.log("isTtransformTarget");
-  }
-};
-
+//
 export const program = getProgram(visitorTransformer);

@@ -10,13 +10,15 @@ import { TTRANSFORM_FN_NAME } from "../ttransform/ttransform.config";
  */
 export interface TtransformInformation {
   targets: TsSymbol[];
-  sourceFileNames: string[];
+  targetsSourceFileNames: string[];
+  usageSourceFileNames: string[];
 }
 
 export function getTtransformInformation(program: Program): TtransformInformation {
   const ttransformInformation: TtransformInformation = {
     targets: [],
-    sourceFileNames: [],
+    targetsSourceFileNames: [],
+    usageSourceFileNames: [],
   };
 
   const typeChecker = program.getTypeChecker();
@@ -32,7 +34,7 @@ export function getTtransformInformation(program: Program): TtransformInformatio
           const expressionName = expressionSymbol ? expressionSymbol.name : "";
 
           if (expressionName === TTRANSFORM_FN_NAME) {
-            ttransformInformation.sourceFileNames.push(sourceFile.fileName);
+            ttransformInformation.usageSourceFileNames.push(sourceFile.fileName);
             const argumentSymbol = typeChecker.getSymbolAtLocation(nodeAndChildNode.arguments[0]);
 
             if (argumentSymbol) {
@@ -44,6 +46,7 @@ export function getTtransformInformation(program: Program): TtransformInformatio
 
               if (!ttransformInformation.targets.includes(classSymbol)) {
                 ttransformInformation.targets.push(classSymbol);
+                ttransformInformation.targetsSourceFileNames.push(classSymbol.declarations[0]?.getSourceFile()?.fileName);
               }
             }
           }

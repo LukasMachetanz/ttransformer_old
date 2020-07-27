@@ -4,6 +4,7 @@ import { Ttransformer } from "@ttransformer/core";
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
 function TestDouble() {
+  console.log("=== TestDouble Decorator ===");
   return (OriginalComponent) => {
 
     const propertyNames = Object.getOwnPropertyNames(OriginalComponent.prototype).filter((propertyName) => propertyName !== 'constructor');
