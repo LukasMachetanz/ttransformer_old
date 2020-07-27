@@ -30,6 +30,13 @@
     },
     "transformer-support": {
       "tags": []
+    },
+    "angular-karma-demo": {
+      "tags": []
+    },
+    "angular-karma-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["angular-karma-demo"]
     }
   }
 }
