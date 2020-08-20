@@ -4,7 +4,7 @@
     "outDir": "../../dist/out-tsc",
     "types": ["jasmine", "node"],
     "plugins": [
-      { "transform": "@ttransformer/angular", "tsConfig": "../../libs/angular/tsconfig.json"}
+      { "transform": "@ttransformer/angular" }
     ]
   },
   "files": ["src/test.ts", "src/polyfills.ts"],
