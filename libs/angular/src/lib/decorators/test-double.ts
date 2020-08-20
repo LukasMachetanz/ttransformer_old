@@ -3,7 +3,7 @@ import { Ttransformer } from "@ttransformer/core";
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
 
-function TestDouble() {
+export function TestDouble() {
   console.log("=== TestDouble Decorator ===");
   return (OriginalComponent) => {
 
