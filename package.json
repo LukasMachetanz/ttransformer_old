@@ -27,11 +27,16 @@
     "playground": "sh ./libs/playground/playground.sh",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "install-ts-patch": "ts-patch install",
-    "build:angular": "nx build angular --prod --with-deps",
+    "build:angular": "nx build angular --prod --with-deps --skip-nx-cache",
+    "version:angular": "cd libs/angular && npm version patch",
+    "version:core": "cd libs/core && npm version patch",
+    "version:transformer-support": "cd libs/transformer-support && npm version patch",
+    "version": "npm run version:angular && npm run version:core && npm run version:transformer-support",
     "publish:angular": "npm publish dist/libs/angular --access=public",
     "publish:core": "npm publish dist/libs/core --access=public",
     "publish:transformer-support": "npm publish dist/libs/transformer-support --access=public",
-    "publish": "npm run publish:angular && npm run publish:core && npm run publish:transformer-support"
+    "publish": "npm run publish:angular && npm run publish:core && npm run publish:transformer-support",
+    "deploy": "npm run version && npm run build:angular && npm run publish"
   },
   "private": true,
   "dependencies": {
