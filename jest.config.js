@@ -1,9 +1,8 @@
 module.exports = {
-  testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
-  transform: {
-    '^.+\\.(ts|js|html)$': 'ts-jest',
-  },
-  resolver: '@nrwl/jest/plugins/resolver',
-  moduleFileExtensions: ['ts', 'js', 'html'],
-  coverageReporters: ['html'],
+  projects: [
+    '<rootDir>/libs/angular',
+    '<rootDir>/libs/core',
+    '<rootDir>/libs/transformer-support',
+    '<rootDir>/libs/playground',
+  ],
 };

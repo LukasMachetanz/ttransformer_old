@@ -1,35 +1,24 @@
 {
   "npmScope": "ttransformer",
-  "affected": {
-    "defaultBase": "master"
-  },
+  "affected": { "defaultBase": "master" },
   "implicitDependencies": {
     "workspace.json": "*",
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    "tsconfig.json": "*",
+    "package.json": { "dependencies": "*", "devDependencies": "*" },
+    "tsconfig.base.json": "*",
     "tslint.json": "*",
+    ".eslintrc.json": "*",
     "nx.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
+      "options": { "cacheableOperations": ["build", "lint", "test", "e2e"] }
     }
   },
   "projects": {
-    "core": {
-      "tags": []
-    },
-    "angular": {
-      "tags": []
-    },
-    "transformer-support": {
-      "tags": []
-    }
+    "angular": { "tags": [] },
+    "core": { "tags": [] },
+    "transformer-support": { "tags": [] },
+    "playground": { "tags": [] }
   }
 }

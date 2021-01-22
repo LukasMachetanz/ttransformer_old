@@ -1,12 +1,15 @@
+/*
 import { ɵComponentDef } from '@angular/core';
 import { Ttransformer } from "@ttransformer/core";
 
 type Writeable<T> = { -readonly [P in keyof T]: T[P] };
+ */
 
 export function TestDouble() {
   console.log("=== TestDouble Decorator ===");
   return (OriginalComponent) => {
 
+    /*
     const propertyNames = Object.getOwnPropertyNames(OriginalComponent.prototype).filter((propertyName) => propertyName !== 'constructor');
 
     if (!propertyNames.includes('ngOnDestroy')) {
@@ -48,6 +51,7 @@ export function TestDouble() {
       },
       set(_: any) {}
     });
+     */
 
     return OriginalComponent;
   };

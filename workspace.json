@@ -1,76 +1,82 @@
 {
-  "version": 1,
+  "version": 2,
   "projects": {
-    "core": {
-      "root": "libs/core",
-      "sourceRoot": "libs/core/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/core/tsconfig.lib.json",
-              "libs/core/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/core/**/*"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/core/jest.config.js",
-            "tsConfig": "libs/core/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        },
-        "build": {
-          "builder": "@nrwl/node:package",
-          "options": {
-            "outputPath": "dist/libs/core",
-            "tsConfig": "libs/core/tsconfig.lib.json",
-            "packageJson": "libs/core/package.json",
-            "main": "libs/core/src/index.ts",
-            "assets": ["libs/core/*.md"]
-          }
-        }
-      }
-    },
     "angular": {
       "root": "libs/angular",
       "sourceRoot": "libs/angular/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/angular/tsconfig.lib.json",
-              "libs/angular/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/angular/**/*"]
+            "lintFilePatterns": [
+              "libs/angular/**/*.ts"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/angular"
+          ],
           "options": {
             "jestConfig": "libs/angular/jest.config.js",
-            "tsConfig": "libs/angular/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
         "build": {
-          "builder": "@nrwl/node:package",
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/angular",
             "tsConfig": "libs/angular/tsconfig.lib.json",
             "packageJson": "libs/angular/package.json",
             "main": "libs/angular/src/index.ts",
-            "assets": ["libs/angular/*.md"]
+            "assets": [
+              "libs/angular/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "core": {
+      "root": "libs/core",
+      "sourceRoot": "libs/core/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/core/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/core"
+          ],
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/libs/core",
+            "tsConfig": "libs/core/tsconfig.lib.json",
+            "packageJson": "libs/core/package.json",
+            "main": "libs/core/src/index.ts",
+            "assets": [
+              "libs/core/*.md"
+            ]
           }
         }
       }
@@ -79,35 +85,69 @@
       "root": "libs/transformer-support",
       "sourceRoot": "libs/transformer-support/src",
       "projectType": "library",
-      "schematics": {},
-      "architect": {
+      "targets": {
         "lint": {
-          "builder": "@nrwl/linter:lint",
+          "executor": "@nrwl/linter:eslint",
           "options": {
-            "linter": "eslint",
-            "tsConfig": [
-              "libs/transformer-support/tsconfig.lib.json",
-              "libs/transformer-support/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/transformer-support/**/*"]
+            "lintFilePatterns": [
+              "libs/transformer-support/**/*.ts"
+            ]
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/transformer-support"
+          ],
           "options": {
             "jestConfig": "libs/transformer-support/jest.config.js",
-            "tsConfig": "libs/transformer-support/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
         "build": {
-          "builder": "@nrwl/node:package",
+          "executor": "@nrwl/node:package",
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/libs/transformer-support",
             "tsConfig": "libs/transformer-support/tsconfig.lib.json",
             "packageJson": "libs/transformer-support/package.json",
             "main": "libs/transformer-support/src/index.ts",
-            "assets": ["libs/transformer-support/*.md"]
+            "assets": [
+              "libs/transformer-support/*.md"
+            ]
+          }
+        }
+      }
+    },
+    "playground": {
+      "projectType": "library",
+      "root": "libs/playground",
+      "sourceRoot": "libs/playground/src",
+      "prefix": "ttransformer",
+      "targets": {
+        "lint": {
+          "executor": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/playground/tsconfig.lib.json",
+              "libs/playground/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/playground/**/*"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/playground"
+          ],
+          "options": {
+            "jestConfig": "libs/playground/jest.config.js",
+            "passWithNoTests": true
           }
         }
       }
@@ -116,70 +156,12 @@
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },
-  "schematics": {
-    "@nrwl/workspace": {
-      "library": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/cypress": {
-      "cypress-project": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/react": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/next": {
-      "application": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/web": {
-      "application": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/node": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/nx-plugin": {
-      "plugin": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/nest": {
-      "application": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/express": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      }
-    },
+  "generators": {
     "@nrwl/angular:application": {
-      "unitTestRunner": "karma",
-      "e2eTestRunner": "cypress"
+      "unitTestRunner": "jest"
     },
     "@nrwl/angular:library": {
-      "unitTestRunner": "karma"
+      "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {
       "style": "scss"

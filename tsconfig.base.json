@@ -10,17 +10,17 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ttransformer/core": ["libs/core/src/index.ts"],
       "@ttransformer/angular": ["libs/angular/src/index.ts"],
+      "@ttransformer/core": ["libs/core/src/index.ts"],
       "@ttransformer/transformer-support": [
         "libs/transformer-support/src/index.ts"
-      ]
+      ],
+      "@ttransformer/playground": ["libs/playground/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
