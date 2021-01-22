@@ -61,7 +61,7 @@
     "@nrwl/eslint-plugin-nx": "9.5.1",
     "@nrwl/jest": "^9.5.1",
     "@nrwl/node": "^9.5.1",
-    "@nrwl/workspace": "9.5.1",
+    "@nrwl/workspace": "10.4.5",
     "@types/jasmine": "~2.8.8",
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
