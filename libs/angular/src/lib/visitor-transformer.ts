@@ -5,9 +5,7 @@ import { createTestDoubleDecoratorPropertyAccessExpression } from "./decorators/
 
 export const visitorTransformer: VisitorTransformer = (node, { sourceFile, context, ttransformInformation }): VisitResult<Node> => {
 
-  /*
   if (isTtransformTarget(node, ttransformInformation)) {
-
     const testDoubleDecorator = createDecorator(
       createCall(createTestDoubleDecoratorPropertyAccessExpression(sourceFile, context), undefined, []),
     );
@@ -22,7 +20,6 @@ export const visitorTransformer: VisitorTransformer = (node, { sourceFile, conte
       node.members,
     );
   }
-   */
 
   return undefined;
 };

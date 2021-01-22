@@ -7,6 +7,9 @@ import { TransformerConfig } from "./types/transformer-config";
 import { SourceFileTransformer } from "./types/source-file-transformer";
 
 export function getProgram(visitorTransformer: VisitorTransformer, sourceFileTransformer?: SourceFileTransformer) {
+  console.log("=== === === === === === === === === ===");
+  console.log("=== === === === === === === === === ===");
+  console.log("=== === === === === === === === === ===");
   console.log("\n\n=== TTRANSFORMER ===\n\n");
 
   return (program: Program, config: ProgramConfig): TransformerFactory<SourceFile> => {
@@ -15,6 +18,10 @@ export function getProgram(visitorTransformer: VisitorTransformer, sourceFileTra
 
     return (context: TransformationContext): ((sourceFile: SourceFile) => SourceFile) => {
       return (sourceFile: SourceFile): SourceFile => {
+        console.log("=== === === === === === === === === ===");
+        console.log(sourceFile.fileName);
+        console.log("=== === === === === === === === === === \n\n\n");
+
         const transformerConfig: TransformerConfig = { program, sourceFile, context, programConfig, ttransformInformation };
         sourceFile = visitNode(sourceFile, getVisitor(visitorTransformer, transformerConfig));
 

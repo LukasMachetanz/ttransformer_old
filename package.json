@@ -5,7 +5,6 @@
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
-    "build": "nx build",
     "test": "nx test",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
@@ -27,16 +26,18 @@
     "playground": "sh ./libs/playground/playground.sh",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "install-ts-patch": "ts-patch install",
-    "build:angular": "nx build angular --prod --with-deps --skip-nx-cache",
+    "clean": "npm cache clean --force",
     "version:angular": "cd libs/angular && npm version patch",
     "version:core": "cd libs/core && npm version patch",
     "version:transformer-support": "cd libs/transformer-support && npm version patch",
     "version": "npm run version:angular && npm run version:core && npm run version:transformer-support",
+    "build:angular": "nx build angular --prod --with-deps --skip-nx-cache",
+    "build": "npm run build:angular",
     "publish:angular": "npm publish dist/libs/angular --access=public",
     "publish:core": "npm publish dist/libs/core --access=public",
     "publish:transformer-support": "npm publish dist/libs/transformer-support --access=public",
     "publish": "npm run publish:angular && npm run publish:core && npm run publish:transformer-support",
-    "deploy": "npm run version && npm run build:angular && npm run publish"
+    "deploy": "npm run clean && npm run version && npm run clean && npm run build && npm run clean && npm run publish"
   },
   "private": true,
   "dependencies": {
